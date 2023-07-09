@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable require-jsdoc */
 const ClientError = require('../../exceptions/ClientError.js');
 
-class SongHandler {
+class SongsHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
@@ -20,12 +18,19 @@ class SongHandler {
       this._validator.validateSongPayload(request.payload);
 
       const {
-        title, year, genre, performer, duration = null, albumId = null,
+        title,
+        year,
+        genre,
+        performer,
+        duration = null,
+        albumId = null,
       } = request.payload;
 
-      const songId = await this._service.addSong({
-        title, year, genre, performer, duration, albumId,
-      });
+      const songId = await this._service.addSong(
+        {
+          title, year, genre, performer, duration, albumId,
+        },
+      );
 
       const response = h.response({
         status: 'success',
@@ -112,12 +117,19 @@ class SongHandler {
       this._validator.validateSongPayload(request.payload);
       const { id } = request.params;
       const {
-        title, year, genre, performer, duration = null, albumId = null,
+        title,
+        year,
+        genre,
+        performer, duration = null,
+        albumId = null,
       } = request.payload;
 
-      await this._service.editSongById(id, {
-        title, year, genre, performer, duration, albumId,
-      });
+      await this._service.editSongById(
+        id,
+        {
+          title, year, genre, performer, duration, albumId,
+        },
+      );
 
       return {
         status: 'success',
@@ -172,4 +184,4 @@ class SongHandler {
   }
 }
 
-module.exports = SongHandler;
+module.exports = SongsHandler;

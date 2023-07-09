@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable require-jsdoc */
 const { nanoid } = require('nanoid');
 const pg = require('pg');
@@ -7,7 +6,7 @@ const NotFoundError = require('../../exceptions/NotFoundError.js');
 
 const { Pool } = pg;
 
-class SongService {
+class SongsService {
   constructor() {
     this._pool = new Pool();
   }
@@ -38,19 +37,19 @@ class SongService {
 
     if (title) {
       // eslint-disable-next-line quotes
-      text = `${text} WHERE title ILIKE '%' || $1 || '%'`;
+      text += " WHERE title ILIKE '%' || $1 || '%'";
       values.push(title);
     }
 
     if (!title && performer) {
       // eslint-disable-next-line quotes
-      text = `${text} WHERE performer ILIKE '%' || $1 || '%'`;
+      text += " WHERE performer ILIKE '%' || $1 || '%'";
       values.push(performer);
     }
 
     if (title && performer) {
       // eslint-disable-next-line quotes
-      text = `${text} AND performer ILIKE '%' || $2 || '%'`;
+      text += " AND performer ILIKE '%' || $2 || '%'";
       values.push(performer);
     }
 
@@ -116,4 +115,4 @@ class SongService {
   }
 }
 
-module.exports = SongService;
+module.exports = SongsService;

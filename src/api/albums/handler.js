@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable require-jsdoc */
 const ClientError = require('../../exceptions/ClientError.js');
 
-class AlbumHandler {
+class AlbumsHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
@@ -144,4 +142,4 @@ class AlbumHandler {
   }
 }
 
-module.exports = AlbumHandler;
+module.exports = AlbumsHandler;

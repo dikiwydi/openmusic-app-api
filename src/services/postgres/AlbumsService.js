@@ -1,13 +1,10 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable require-jsdoc */
 const { nanoid } = require('nanoid');
-const pg = require('pg');
+const { Pool } = require('pg');
 const InvariantError = require('../../exceptions/InvariantError.js');
 const NotFoundError = require('../../exceptions/NotFoundError.js');
 
-const { Pool } = pg;
-
-class AlbumService {
+class AlbumsService {
   constructor() {
     this._pool = new Pool();
   }
@@ -84,4 +81,5 @@ class AlbumService {
     }
   }
 }
-module.exports = AlbumService;
+
+module.exports = AlbumsService;

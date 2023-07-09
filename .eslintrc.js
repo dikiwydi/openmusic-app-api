@@ -7,6 +7,12 @@ module.exports = {
   },
   extends: 'airbnb-base',
   overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        'no-underscore-dangle': 'off',
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -14,6 +20,6 @@ module.exports = {
   rules: {
     'import/no-require': 'off',
     'import/extensions': 'off',
-    'no-console': 'error',
+    'no-console': 'off',
   },
 };

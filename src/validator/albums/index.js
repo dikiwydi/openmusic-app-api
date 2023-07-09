@@ -1,13 +1,13 @@
 const InvariantError = require('../../exceptions/InvariantError.js');
-const AlbumPayloadScheme = require('./schema.js');
+const AlbumsPayloadScheme = require('./schema.js');
 
-const AlbumValidator = {
+const AlbumsValidator = {
   validateAlbumPayload: (payload) => {
-    const validationResult = AlbumPayloadScheme.validate(payload);
+    const validationResult = AlbumsPayloadScheme.validate(payload);
     if (validationResult.error) {
       throw new InvariantError(validationResult.error.message);
     }
   },
 };
 
-module.exports = AlbumValidator;
+module.exports = AlbumsValidator;
